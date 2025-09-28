@@ -34,7 +34,7 @@ public class ActividadServiceImpl implements ActividadService {
     @Override
     public ApiResponse<ActividadDtoResponse> buscarActividadPorId(Integer id) {
         return actividadRepository.findById(id)
-                .map(viaje -> new ApiResponse<>(true, actividadMapper.toActividadDtoResponse(viaje), null))
+                .map(actividad -> new ApiResponse<>(true, actividadMapper.toActividadDtoResponse(actividad), null))
                 .orElseGet(() -> new ApiResponse<>(false, null, "Actividad con ID " + id + " no encontrado"));
     }
 
