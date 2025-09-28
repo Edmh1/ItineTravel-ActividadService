@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 public record ActividadDtoResponse(
 
+        Integer idActividad,
         Integer idViaje,
         Integer idTipoActividad,
         Integer idUbicacion,
