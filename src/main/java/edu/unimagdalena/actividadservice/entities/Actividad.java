@@ -36,7 +36,7 @@ public class Actividad {
     @Column
     private LocalDateTime fecha;
 
-    @ManyToOne
+    @ManyToOne(optional = true)
     @JoinColumn(name = "id_ubicacion", referencedColumnName = "idUbicacion")
     private Ubicacion ubicacion;
 

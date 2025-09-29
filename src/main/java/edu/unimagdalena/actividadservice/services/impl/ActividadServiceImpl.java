@@ -67,11 +67,14 @@ public class ActividadServiceImpl implements ActividadService {
         }
         TipoActividad tipoActividad = tipoActividadOptional.get();
 
-        Optional<Ubicacion> ubicacionOptional = ubicacionRepository.findById(actividadDtoRequest.idUbicacion());
-        if(!ubicacionOptional.isPresent()){
-            return new ApiResponse<>(false, null, "La ubicación con ID " + actividadDtoRequest.idUbicacion() + " no encontrado");
+        Ubicacion ubicacion = null;
+        if(actividadDtoRequest.idUbicacion() != null){
+            Optional<Ubicacion> ubicacionOptional = ubicacionRepository.findById(actividadDtoRequest.idUbicacion());
+            if(!ubicacionOptional.isPresent()){
+                return new ApiResponse<>(false, null, "La ubicación con ID " + actividadDtoRequest.idUbicacion() + " no encontrado");
+            }
+            ubicacion = ubicacionOptional.get();
         }
-        Ubicacion ubicacion = ubicacionOptional.get();
 
         Actividad actividad = actividadMapper.toEntity(actividadDtoRequest);
         actividad.setUbicacion(ubicacion);

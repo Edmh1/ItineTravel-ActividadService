@@ -1,5 +1,6 @@
 package edu.unimagdalena.actividadservice.dtos.requests;
 
+import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -12,7 +13,8 @@ public record ActividadDtoRequest(
         Integer idViaje,
         @NotNull @Positive(message = "El id debe ser positivo")
         Integer idTipoActividad,
-        @NotNull @Positive(message = "El id debe ser positivo")
+        @Positive(message = "El id debe ser positivo")
+        @Nullable
         Integer idUbicacion,
         @NotNull @NotBlank
         String titulo,
