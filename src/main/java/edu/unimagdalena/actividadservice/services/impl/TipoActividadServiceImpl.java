@@ -23,16 +23,14 @@ public class TipoActividadServiceImpl implements TipoActividadService {
 
 
     @Override
-    public List<ApiResponse<TipoActividadDtoRes>> buscarTodos() {
+    public ApiResponse<List<TipoActividadDtoRes>> buscarTodos() {
         List<TipoActividad> tipoAactividades = tipoActividadRepository.findAll();
 
-        return tipoAactividades.stream()
-                .map(tipoActividad -> new ApiResponse<>(
-                        true,
-                        tipoActividadMapper.toTipoActividadDtoRes(tipoActividad),
-                        null
-                ))
+        List<TipoActividadDtoRes> dtoList = tipoAactividades.stream()
+                .map(tipoActividadMapper::toTipoActividadDtoRes)
                 .toList();
+
+        return new ApiResponse<>(true, dtoList, null);
 
     }
 

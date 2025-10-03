@@ -9,7 +9,7 @@ import java.util.List;
 public interface UbicacionService {
 
     ApiResponse<UbicacionDtoResponse> buscarPorId(Integer id);
-    List<ApiResponse<UbicacionDtoResponse>> buscarTodos();
+    ApiResponse<List<UbicacionDtoResponse>> buscarTodos();
     ApiResponse<UbicacionDtoResponse> agregarUbicacion(UbicacionDtoRequest ubicacionDto);
     ApiResponse<UbicacionDtoResponse> actualizarUbicacion(Integer id, UbicacionDtoRequest ubicacionDto);
     ApiResponse<Void> eliminar(Integer id);

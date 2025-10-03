@@ -24,9 +24,8 @@ public class ActividadController {
     private final ActividadService actividadService;
 
     @GetMapping
-    public ResponseEntity<List<ApiResponse<ActividadDtoResponse>>> buscarActividades() {
-        List<ApiResponse<ActividadDtoResponse>> list = actividadService.buscarTodasActividades();
-        return ResponseEntity.ok(list);
+    public ResponseEntity<ApiResponse<List<ActividadDtoResponse>>> buscarActividades() {
+        return ResponseEntity.ok(actividadService.buscarTodasActividades());
     }
 
     @GetMapping("/viajes/{idViaje}")
