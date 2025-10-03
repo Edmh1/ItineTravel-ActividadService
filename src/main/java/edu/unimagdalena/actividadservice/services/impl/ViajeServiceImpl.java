@@ -31,16 +31,14 @@ public class ViajeServiceImpl implements ViajeService {
     }
 
     @Override
-    public List<ApiResponse<ViajeDtoResponse>> buscarTodosViajes() {
+    public ApiResponse<List<ViajeDtoResponse>> buscarTodosViajes() {
         List<Viaje> viajes = viajeRepository.findAll();
 
-        return viajes.stream()
-                .map(viaje -> new ApiResponse<>(
-                        true,
-                        viajeMapper.toViajeDtoResponse(viaje),
-                        null
-                ))
+        List<ViajeDtoResponse> dtoList = viajes.stream()
+                .map(viajeMapper::toViajeDtoResponse)
                 .toList();
+
+        return new ApiResponse<>(true, dtoList, null);
     }
 
     @Override

@@ -32,16 +32,14 @@ public class UbicacionServiceImpl implements UbicacionService {
     }
 
     @Override
-    public List<ApiResponse<UbicacionDtoResponse>> buscarTodos() {
+    public ApiResponse<List<UbicacionDtoResponse>> buscarTodos() {
         List<Ubicacion> ubicaciones = ubicacionRepository.findAll();
 
-        return ubicaciones.stream()
-                .map(ubicacion -> new ApiResponse<>(
-                        true,
-                        ubicacionMapper.toUbicacionDto(ubicacion),
-                        null
-                ))
+        List<UbicacionDtoResponse> dtoList = ubicaciones.stream()
+                .map(ubicacionMapper::toUbicacionDto)
                 .toList();
+
+        return new ApiResponse<>(true, dtoList, null);
     }
 
     @Override

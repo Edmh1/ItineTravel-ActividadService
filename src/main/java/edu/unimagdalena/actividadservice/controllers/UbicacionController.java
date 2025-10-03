@@ -22,9 +22,8 @@ public class UbicacionController {
     private final UbicacionService ubicacionService;
 
     @GetMapping
-    public ResponseEntity<List<ApiResponse<UbicacionDtoResponse>>> buscarUbicaciones() {
-        List<ApiResponse<UbicacionDtoResponse>> list = ubicacionService.buscarTodos();
-        return ResponseEntity.ok(list);
+    public ResponseEntity<ApiResponse<List<UbicacionDtoResponse>>> buscarUbicaciones() {
+        return ResponseEntity.ok(ubicacionService.buscarTodos());
     }
 
     @GetMapping("/{id}")

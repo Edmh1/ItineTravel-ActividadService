@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TipoActividadService {
 
-    List<ApiResponse<TipoActividadDtoRes>> buscarTodos();
+    ApiResponse<List<TipoActividadDtoRes>> buscarTodos();
     ApiResponse<TipoActividadDtoRes> buscarPorId(Integer id);
     ApiResponse<TipoActividadDtoRes> guardarTipo(TipoActividadDtoReq tipoDto);
     ApiResponse<TipoActividadDtoRes> actualizarTipo(Integer id, TipoActividadDtoReq tipoDto);

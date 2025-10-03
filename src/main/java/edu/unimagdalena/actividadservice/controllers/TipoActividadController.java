@@ -20,9 +20,8 @@ public class TipoActividadController {
     private final TipoActividadService tipoActividadService;
 
     @GetMapping
-    public ResponseEntity<List<ApiResponse<TipoActividadDtoRes>>> buscarTipoActividades() {
-        List<ApiResponse<TipoActividadDtoRes>> list = tipoActividadService.buscarTodos();
-        return ResponseEntity.ok(list);
+    public ResponseEntity<ApiResponse<List<TipoActividadDtoRes>>> buscarTipoActividades() {
+        return ResponseEntity.ok(tipoActividadService.buscarTodos());
     }
 
     @GetMapping("/{id}")
