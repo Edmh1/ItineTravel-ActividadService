@@ -23,9 +23,8 @@ public class ViajeController {
     private final ViajeService viajeService;
 
     @GetMapping
-    public ResponseEntity<List<ApiResponse<ViajeDtoResponse>>> buscarViajes() {
-        List<ApiResponse<ViajeDtoResponse>> list = viajeService.buscarTodosViajes();
-        return ResponseEntity.ok(list);
+    public ResponseEntity<ApiResponse<List<ViajeDtoResponse>>> buscarViajes() {
+        return ResponseEntity.ok(viajeService.buscarTodosViajes());
     }
 
     @GetMapping("/{id}")

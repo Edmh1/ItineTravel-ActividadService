@@ -10,7 +10,7 @@ import java.util.List;
 public interface ViajeService {
 
     ApiResponse<ViajeDtoResponse> buscarViajePorId(Integer idViaje);
-    List<ApiResponse<ViajeDtoResponse>> buscarTodosViajes();
+    ApiResponse<List<ViajeDtoResponse>> buscarTodosViajes();
     ApiResponse<ViajeDtoResponse> guardarViaje(ViajeDtoRequest viajeDtoRequest);
     ApiResponse<ViajeDtoResponse> actualizarViaje(Integer idViaje, ViajeDtoUpdateRequest viajeDtoRequest);
     ApiResponse<Void> borrarViaje(Integer idViaje);

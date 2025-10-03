@@ -40,17 +40,14 @@ public class ActividadServiceImpl implements ActividadService {
     }
 
     @Override
-    public List<ApiResponse<ActividadDtoResponse>> buscarTodasActividades() {
+    public ApiResponse<List<ActividadDtoResponse>> buscarTodasActividades() {
 
         List<Actividad> actividades = actividadRepository.findAll();
-
-        return actividades.stream()
-                .map(actividad -> new ApiResponse<>(
-                        true,
-                        actividadMapper.toActividadDtoResponse(actividad),
-                        null
-                ))
+        List<ActividadDtoResponse> dtoList = actividades.stream()
+                .map(actividadMapper::toActividadDtoResponse)
                 .toList();
+
+        return new ApiResponse<>(true, dtoList, null);
 
     }
 
