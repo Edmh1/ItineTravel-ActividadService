@@ -29,6 +29,16 @@ public class ActividadController {
         return ResponseEntity.ok(list);
     }
 
+    @GetMapping("/viajes/{idViaje}")
+    public ResponseEntity<ApiResponse<List<ActividadDtoResponse>>> buscarActividadesPorIdViaje(@PathVariable  Integer idViaje){
+        ApiResponse<List<ActividadDtoResponse>> list = actividadService.buscarActividadesPorViaje(idViaje);
+        if(!list.isSuccess()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(list);
+        }
+
+        return ResponseEntity.ok(list);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<ActividadDtoResponse>> buscarPorId(@PathVariable Integer id) {
         ApiResponse<ActividadDtoResponse> resp = actividadService.buscarActividadPorId(id);
