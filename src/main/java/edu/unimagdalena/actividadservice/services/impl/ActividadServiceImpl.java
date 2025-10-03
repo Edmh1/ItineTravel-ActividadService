@@ -7,6 +7,7 @@ import edu.unimagdalena.actividadservice.entities.Actividad;
 import edu.unimagdalena.actividadservice.entities.TipoActividad;
 import edu.unimagdalena.actividadservice.entities.Ubicacion;
 import edu.unimagdalena.actividadservice.entities.Viaje;
+import edu.unimagdalena.actividadservice.exceptions.handler.ApiError;
 import edu.unimagdalena.actividadservice.mappers.ActividadMapper;
 import edu.unimagdalena.actividadservice.repositories.ActividadRepository;
 import edu.unimagdalena.actividadservice.repositories.TipoActividadRepository;
@@ -52,6 +53,23 @@ public class ActividadServiceImpl implements ActividadService {
                 .toList();
 
     }
+
+    @Override
+    public ApiResponse<List<ActividadDtoResponse>> buscarActividadesPorViaje(Integer idViaje) {
+
+        if(!viajeRepository.existsById(idViaje)){
+            return new ApiResponse<>(false, null, "El viaje con ID "+idViaje+" no encontrado");
+        }
+
+        List<Actividad> actividades = actividadRepository.findByViajeIdViaje(idViaje);
+
+        List<ActividadDtoResponse> listaDto = actividades.stream()
+                .map(actividadMapper::toActividadDtoResponse)
+                .toList();
+
+        return new ApiResponse<>(true, listaDto, null);
+    }
+
 
     @Override
     public ApiResponse<ActividadDtoResponse> agregarActividad(ActividadDtoRequest actividadDtoRequest) {
