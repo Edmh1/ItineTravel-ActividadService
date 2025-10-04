@@ -43,4 +43,13 @@ public class Actividad {
     @Column
     private float costo;
 
+    @OneToOne(mappedBy = "actividad")
+    private Alojamiento alojamiento;
+
+    @OneToOne(mappedBy = "actividad")
+    private Vuelo vuelo;
+
+    @OneToOne(mappedBy = "actividad")
+    private Transporte transporte;
+
 }
