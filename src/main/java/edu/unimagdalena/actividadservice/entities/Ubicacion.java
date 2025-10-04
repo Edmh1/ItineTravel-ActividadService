@@ -28,4 +28,10 @@ public class Ubicacion {
 
     @OneToMany(mappedBy = "padre", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ubicacion> hijos = new ArrayList<>();
+
+    @OneToMany(mappedBy = "origenVuelo")
+    private List<Vuelo> vuelosOrigen = new ArrayList<>();
+
+    @OneToMany(mappedBy = "destinoVuelo")
+    private List<Vuelo> vuelosDestino = new ArrayList<>();
 }
