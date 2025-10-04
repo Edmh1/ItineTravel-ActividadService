@@ -2,8 +2,7 @@ package edu.unimagdalena.actividadservice.dtos.response;
 
 import java.time.LocalDateTime;
 
-public record ActividadDtoResponse(
-
+public record VueloDtoResponse(
         Integer idActividad,
         Integer idViaje,
         Integer idTipoActividad,
@@ -11,6 +10,10 @@ public record ActividadDtoResponse(
         String titulo,
         String descripcionActividad,
         LocalDateTime fecha,
-        float costo
+        float costo,
+        String aereolineaa,
+        Integer nVuelo,
+        Integer idOrigenVuelo,
+        Integer idDestinoVuelo
 ) {
 }
