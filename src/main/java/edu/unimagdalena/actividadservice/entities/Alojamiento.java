@@ -2,6 +2,7 @@ package edu.unimagdalena.actividadservice.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDateTime;
 
@@ -18,7 +19,7 @@ public class Alojamiento {
     @Column (name = "id_actividad")
     private Integer idActividad;
 
-    @OneToOne @MapsId
+    @OneToOne(cascade = CascadeType.REMOVE) @MapsId
     @JoinColumn(name = "id_actividad")
     private Actividad actividad;
 

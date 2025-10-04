@@ -15,7 +15,7 @@ public class Vuelo {
     @Id @Column(name = "id_actividad")
     private Integer idActividad;
 
-    @OneToOne @MapsId
+    @OneToOne(cascade = CascadeType.REMOVE) @MapsId
     @JoinColumn(name = "id_actividad")
     private Actividad actividad;
 
