@@ -11,6 +11,7 @@ public interface ViajeService {
 
     ApiResponse<ViajeDtoResponse> buscarViajePorId(Integer idViaje);
     ApiResponse<List<ViajeDtoResponse>> buscarTodosViajes();
+    ApiResponse<List<ViajeDtoResponse>> buscarTodosViajesPorUsuario(Integer idUsuario);
     ApiResponse<ViajeDtoResponse> guardarViaje(ViajeDtoRequest viajeDtoRequest);
     ApiResponse<ViajeDtoResponse> actualizarViaje(Integer idViaje, ViajeDtoUpdateRequest viajeDtoRequest);
     ApiResponse<Void> borrarViaje(Integer idViaje);
