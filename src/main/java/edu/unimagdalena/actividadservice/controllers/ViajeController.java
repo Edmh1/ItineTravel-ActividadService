@@ -6,6 +6,7 @@ import edu.unimagdalena.actividadservice.dtos.requests.ViajeDtoUpdateRequest;
 import edu.unimagdalena.actividadservice.dtos.response.ViajeDtoResponse;
 import edu.unimagdalena.actividadservice.services.ViajeService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,16 @@ public class ViajeController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resp);
         }
         return ResponseEntity.badRequest().body(resp);
+    }
+
+    @GetMapping("/usuarios/{idUsuario}")
+    public ResponseEntity<ApiResponse<List<ViajeDtoResponse>>> buscarViajesPorUsuario(@PathVariable @NotNull Integer idUsuario){
+        ApiResponse<List<ViajeDtoResponse>> response = viajeService.buscarTodosViajesPorUsuario(idUsuario);
+        if(!response.isSuccess()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping

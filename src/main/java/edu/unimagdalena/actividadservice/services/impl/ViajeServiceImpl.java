@@ -42,6 +42,16 @@ public class ViajeServiceImpl implements ViajeService {
     }
 
     @Override
+    public ApiResponse<List<ViajeDtoResponse>> buscarTodosViajesPorUsuario(Integer idUsuario) {
+        List<Viaje> viajes = viajeRepository.findAllByIdViajero(idUsuario);
+        List<ViajeDtoResponse> listaDto = viajes.stream()
+                .map(viajeMapper::toViajeDtoResponse)
+                .toList();
+
+        return new ApiResponse<>(true, listaDto, null);
+    }
+
+    @Override
     public ApiResponse<ViajeDtoResponse> guardarViaje(ViajeDtoRequest viajeDtoRequest) {
         if (viajeDtoRequest.fechaInicio().isAfter(viajeDtoRequest.fechaFin())) {
             return new ApiResponse<>(false, null, "La fecha de inicio no puede ser después que la fecha de fin");
